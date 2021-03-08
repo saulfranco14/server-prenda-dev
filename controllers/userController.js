@@ -47,7 +47,7 @@ exports.createUser = async ( req, response ) => {
         });
 
         // Exitoso
-        // response.json({ msg: 'Se ha creado tu usuario.'});
+        response.json({ msg: 'Se ha creado tu usuario.'});
     } catch (error) {
         console.log(error);
         response.status(400).send("hubo un error al crear un usuario");
