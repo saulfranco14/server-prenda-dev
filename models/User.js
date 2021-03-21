@@ -25,6 +25,16 @@ const UserSchema = mongoose.Schema({
         required : true,
         trim: true,
     },
+    role : {
+        type: String,
+        required : true,
+        trim: true,
+    },
+    sexo : {
+        type : String,
+        required : true,
+        trim: true,
+    },
     last_login : {
         type: Date,
         require : false,

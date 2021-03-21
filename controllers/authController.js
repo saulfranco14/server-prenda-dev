@@ -16,6 +16,7 @@ exports.authUser = async( request, response ) =>{
 
         // Revisar usuario registrado
         let user = await User.findOne({email});
+    
         if(!user){
             return response.status(400).json( { msg: ' Datos incorrectos ' } );
         }
@@ -51,7 +52,6 @@ exports.getUserAuth = async ( request, response ) =>{
         const user = await User.findById( request.user.id ).select('-password');
         response.json( { msg: "user token", auth: user } );
     } catch (error) {
-        console.log(error);
         response.status(500).json({ msg: 'Hubo un error en el auth de usuario.'});
     }
 }

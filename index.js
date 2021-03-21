@@ -27,6 +27,8 @@ app.use('/api/auth', require('./routes/auth') );
 app.use('/api/projects', require('./routes/projects') );
 /***************** PROJECTS ************************/
 app.use('/api/tasks', require('./routes/tasks') );
+/***************** CONTACTS ************************/
+app.use('/api/contacts', require('./routes/contacts') );
 
 // start server 
 app.listen(PORT, ()=>{

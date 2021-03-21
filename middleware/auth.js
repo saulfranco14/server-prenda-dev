@@ -5,6 +5,7 @@ module.exports = function( request, response, next ){
 
     // Read Tokem from Header
     const token = request.header('x-auth-token');
+    console.log(token);
 
     // Review in the token 
     if( !token ){
