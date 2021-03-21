@@ -26,3 +26,26 @@ exports.createContact = async ( request, response ) => {
         response.status(400).send('Hubo un error al crear al usuario');
     }
 }
+
+// GET PROJECT
+exports.getProjects = async( request, response )=>{
+    try {
+        const projects = await Project.find({ user_id : request.user.id });
+        response.json( { projects } );
+    } catch (error) {
+        console.log(error);
+        response.status(500).send('Hubo un error al traer los proyectos');
+    }
+}
+
+
+// GET CONTACTS
+exports.getContacts = async( request, response )=>{
+    try {
+        const contacts = await Contact.find({});
+        response.json({contacts});
+    } catch (error) {
+        console.log(error);
+        response.status(500).send('Hubo un error al traer los contacts');
+    }
+}

@@ -16,4 +16,11 @@ router.post('/',
     contactController.createContact
 )
 
+// Obtiene los contactos 
+router.get('/',
+    auth,
+    contactController.getContacts
+)
+
+
 module.exports = router;
