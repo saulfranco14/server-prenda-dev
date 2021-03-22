@@ -1,5 +1,6 @@
 const Contact               = require('../models/User');
 const { validationResult }  = require('express-validator');
+const { v4: uuidv4 }        = require('uuid');
 const bcryptjs              = require('bcryptjs');
 
 // Creación del usuario/contacto
@@ -17,11 +18,11 @@ exports.createContact = async ( request, response ) => {
         */
         const salt              = await bcryptjs.genSalt(10);
         contact.password        = await bcryptjs.hash( password, salt );
-    
+        contact.id              = uuidv4();
         await contact.save();
        
-        response.json({ statusCode: 1,  contact: contact, msg: "Contacto creada exitosamente" })
-    } catch (error) {
+        response.json( { id: contact.id,  contact: contact, msg: "Contacto creada exitosamente" } )
+    } catch (error) { 
         console.log(error);
         response.status(400).send('Hubo un error al crear al usuario');
     }

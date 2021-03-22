@@ -30,7 +30,7 @@ exports.authUser = async( request, response ) =>{
         // Guardamos el JWT
         const payload ={
             user : {
-                id : user.id,
+                _id : user._id,
             }
         };
 
@@ -49,7 +49,7 @@ exports.authUser = async( request, response ) =>{
 
 exports.getUserAuth = async ( request, response ) =>{
     try {
-        const user = await User.findById( request.user.id ).select('-password');
+        const user = await User.findById( request.user._id ).select('-password');
         response.json( { msg: "user token", auth: user } );
     } catch (error) {
         response.status(500).json({ msg: 'Hubo un error en el auth de usuario.'});

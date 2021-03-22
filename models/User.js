@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+// const opts = { toJSON: { virtuals: true } };
+
 const UserSchema = mongoose.Schema({
     created_at :{
         type: Date,
@@ -38,7 +40,15 @@ const UserSchema = mongoose.Schema({
     last_login : {
         type: Date,
         require : false,
-    }
+    },
+    active : {
+        type: Boolean,
+        default : true,
+    },
+    id : {
+        type: String,
+        require: false
+    } 
 });
 
 module.exports = mongoose.model('User', UserSchema );
