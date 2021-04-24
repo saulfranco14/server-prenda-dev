@@ -22,5 +22,12 @@ router.get('/',
     contactController.getContacts
 )
 
+// Actualizar los contactos
+router.put('/:id',
+    auth,
+    contactController.putContacts
+)
+
+
 
 module.exports = router;
